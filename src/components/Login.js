@@ -21,6 +21,14 @@ const Login = () => {
         <h1 className="font-bold text-3xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
+        {!isSignInForm && (
+          <input
+            
+            type="text"
+            placeholder="Full Name"
+            className="p-4 my-4 w-full bg-gray-700"
+          />
+        )}
         <input
           type="text"
           placeholder="Email Address"
@@ -38,7 +46,7 @@ const Login = () => {
         </button>
         <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
 
-          New to Netflix? Sign Up Now
+          {isSignInForm ? "New to Netflix? Sign Up Now" : "Already registered? Sign In Now."}
 
         </p>
       </form>
