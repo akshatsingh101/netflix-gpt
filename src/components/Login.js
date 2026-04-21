@@ -7,12 +7,14 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
 
   const name = useRef(null);
   const email = useRef(null);
@@ -34,6 +36,7 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
+           navigate("/browse")
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -52,6 +55,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+           navigate("/browse")
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -69,7 +73,7 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute inset-0 -z-10" >
+      <div className="absolute inset-0 " >
         <img src="https://repository-images.githubusercontent.com/299409710/b42f7780-0fe1-11eb-8460-e459acd20fb4"
           alt="bg"
           className="w-full h-full object-cover"
